@@ -1,1 +1,42 @@
-<h1>掲示板一覧</h1>
+<div class="d-flex align-items-center">
+  <h1>掲示板一覧</h1>
+  <div class="ml-auto boards__linkBox">
+    <%= link_to '新規作成', new_blog_path, class: "btn btn-outline-dark" %>
+  </div>
+</div>
+<% if flash[:notice] %>
+  <p class="alert alert-primary"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:success] %>
+  <p class="alert alert-success"><%= flash[:success] %></p>
+<% end %>
+<% if flash[:danger] %>
+  <p class="alert alert-danger"><%= flash[:danger] %></p>
+<% end %>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th >ID</th>
+      <th>タイトル</th>
+      <th>作成者</th>
+      <th>作成日時</th>
+      <th>更新日時</th>
+      <th></th>
+      <th></th>
+   </tr>
+ </thead>
+ <tbody>
+   <% @blogs.each do |blog| %>
+     <tr>
+       <td><%= blog.id %></td>
+       <td><%= blog.title %></td>
+       <td><%= blog.name %></td>
+       <td><%= blog.created_at.to_s(:datetime_jp) %></td>
+       <td><%= blog.updated_at.to_s(:datetime_jp) %></td>
+       <td><%= link_to '詳細', blog, class: "btn btn-outline-dark" %></td>
+       <td><%= link_to '削除', blog, class: "btn btn-outline-dark", method: :delete %></td>
+     </tr>
+   <% end %>
+ </tbody>
+</table>
