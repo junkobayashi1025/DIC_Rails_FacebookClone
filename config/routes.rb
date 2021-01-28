@@ -4,7 +4,7 @@ Rails.application.routes.draw do
  delete 'logout', to: 'sessions#destroy'
   root 'home#index'
   resources :comments, only: [:create, :destroy]
-  resources :users, only: [:new, :create]
+  resources :users
   resources :blogs do
     collection do
       post :confirm

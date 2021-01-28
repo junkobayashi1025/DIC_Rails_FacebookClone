@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
 
   def new
     @blog = Blog.new
-    
+
   end
 
   def create
@@ -48,12 +48,13 @@ class BlogsController < ApplicationController
   end
 
   private
-
-  def blog_params
-    params.require(:blog).permit(:name, :title, :body)
-  end
-
   def set_blog
     @blog = Blog.find(params[:id])
   end
+
+  def blog_params
+    params.require(:blog).permit(:name, :title, :body, :image, :image_cache)
+  end
+
+
 end
