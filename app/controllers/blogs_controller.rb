@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
 
   def new
     @blog = Blog.new
-    render :new if @blog.invalid?
+    
   end
 
   def create
@@ -29,6 +29,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new(blog_id: @blog.id)
   end
 
   def edit

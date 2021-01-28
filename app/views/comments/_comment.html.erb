@@ -1,0 +1,21 @@
+<% if @comment.errors.any? %>
+  <div id="error_explanation" class="alert-danger">
+    <h2><%= @comment.errors.count %>件のエラーがあります。</h2>
+    <ul>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<div class="p-comment__item">
+  <p><%= simple_format(comment.comment) %></p>
+  <div class="p-comment__bottomLine">
+    <span><%= comment.name %></span>
+    <span><%= comment.created_at.to_s %></span>
+    <span><%= link_to '削除', comment, method: :delete, data: { confirm: '削除してよろしいですか？' } %></span>
+  </div>
+</div>
