@@ -1,6 +1,5 @@
 <div class="d-flex align-items-center mt-4 mb-4">
   <div class="ml-auto boards__linkBox">
-    <%= link_to '一覧', blogs_path, class: "btn btn-outline-dark" %>
     <%= link_to '編集', edit_blog_path(@blog), class: "btn btn-outline-dark" %>
   </div>
 </div>
@@ -28,7 +27,7 @@
     <span class="card-text"><%= simple_format(@blog.body) %></span>
     </div>
     <div class="clear">
-    <p class="text-right font-weight-bold mr-10"><%= @blog.name %></p>
+    <p class="text-right font-weight-bold mr-10"><%= @blog.user.name %></p>
     </div>
   </div>
 </div>
