@@ -1,6 +1,8 @@
 <h1>ログイン</h1>
-
-<%= form_for(:session, method: :post, url: login_path) do |f| %>
+<% if flash[:danger] %>
+  <p class="alert alert-danger"><%= flash[:danger] %></p>
+<% end %>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
   <div class="form-group">
     <%= f.label :email, 'メールアドレス' %>
     <%= f.text_field :email, class: 'form-control' %>

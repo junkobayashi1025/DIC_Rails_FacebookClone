@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
- get 'mypage', to: 'users#me'
- post 'login', to: 'sessions#create'
- delete 'logout', to: 'sessions#destroy'
   root 'home#index'
   resources :comments, only: [:create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :blogs do
     collection do
