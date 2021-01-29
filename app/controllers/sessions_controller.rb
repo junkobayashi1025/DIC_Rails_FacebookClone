@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+  before_action :authenticate_user, {only: [:edit, :destroy]}
+  def new
+  end
+
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
@@ -12,6 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    redirect_to root_path
+    flash[:notice] = 'ログアウトしました'
+    redirect_to new_session_path
   end
 end

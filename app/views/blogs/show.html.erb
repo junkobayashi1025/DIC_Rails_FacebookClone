@@ -18,10 +18,18 @@
   </div>
   <div class="card-body">
     <div class="">
-　　<%= image_tag @blog.image.url %>
+    <% if @blog.image.present?%>
+    <%= image_tag @blog.image.url, class: "image_show"%>
+    <% else %>
+    <%= image_tag "/assets/noimage.png", class: "image_show" %>
+    <% end %>
     </div>
-    <p class="card-text"><%= simple_format(@blog.body) %></p>
+    <div class="text">
+    <span class="card-text"><%= simple_format(@blog.body) %></span>
+    </div>
+    <div class="clear">
     <p class="text-right font-weight-bold mr-10"><%= @blog.name %></p>
+    </div>
   </div>
 </div>
 
